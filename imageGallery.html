@@ -1,1 +1,94 @@
+HTMLFILE
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>IMAGE GALLERY</h1>
+    <div class="Image">
+    <img src="istockphoto-1645602428-1024x1024.jpg" alt="image" width="300px" height="300px">
+    <img src="rose-320868_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="flower-2071522_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="frog-3817964_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="pexels-photo-931177.jpeg" alt="image" width="300px" height="300px">
+    <img src="peony-8166078_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="flower-9221176_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="flowers-2068692_1280.jpg"alt="image" width="300px" height="300px">
+    <img src="flower-7700011_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="tulips-3339416_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="flower-8094368_1280.jpg" alt="image" width="300px" height="300px">
+    <img src="flower-4875870_1280.jpg" alt="image" width="300px" height="300px">
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+CSSFILE
+h1 {
+    text-decoration-line: underline;
+    text-align: center;
+    font-style: italic;
+    margin: 0cm;
+    text-decoration-color: rgb(241, 118, 196);
+    color: rgb(241, 118, 196);
+}
+body{
+    background-color:rgb(169, 228, 169);
+}
+img{
+    border-radius: 75px;
+    border: 20px;
+    padding:20px;
+    opacity: 0.8;
+}
+img:hover{
+    transform: scaleX(-1);
+    box-shadow: 0 6px 18px rgba(184, 27, 168, 0.886);
+}
+
+JAVASCRIPTFILE
+const lightbox = document.createElement("div");
+lightbox.id = "lightbox";
+document.body.appendChild(lightbox);
+const imgElement = document.createElement("img");
+lightbox.appendChild(imgElement);
+lightbox.style.position = "fixed";
+lightbox.style.top = "0";
+lightbox.style.left = "0";
+lightbox.style.width = "100%";
+lightbox.style.height = "100%";
+lightbox.style.background = "rgba(0,0,0,0.9)";
+lightbox.style.display = "none";
+lightbox.style.justifyContent = "center";
+lightbox.style.alignItems = "center";
+lightbox.style.zIndex = "1000";
+
+imgElement.style.maxWidth = "90%";
+imgElement.style.maxHeight = "80%";
+imgElement.style.borderRadius = "25px";
+imgElement.style.boxShadow = "0 8px 25px rgba(0,0,0,0.7)";
+imgElement.style.transition = "transform 0.3s ease";
+const images = document.querySelectorAll(".Image img");
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    imgElement.src = img.src;
+  });
+});
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== imgElement) {
+    lightbox.style.display = "none";
+  }
+});
+
+
 
